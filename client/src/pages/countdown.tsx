@@ -67,7 +67,7 @@ export default function CountdownPage() {
           <Link href="/itinerary">
             <Button
               size="lg"
-              className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border-2 border-white/30 rounded-2xl px-8 py-6 text-lg font-semibold transition-all hover:scale-105 active:scale-95"
+              className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 rounded-2xl px-8 py-6 text-lg font-semibold"
               data-testid="button-view-itinerary"
             >
               <Calendar className="mr-2 h-5 w-5" />

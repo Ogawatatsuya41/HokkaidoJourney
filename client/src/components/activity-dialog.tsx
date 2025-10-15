@@ -183,7 +183,11 @@ export function ActivityDialog({
                       </FormControl>
                       <SelectContent>
                         {[1, 2, 3, 4, 5].map((day) => (
-                          <SelectItem key={day} value={day.toString()}>
+                          <SelectItem
+                            key={day}
+                            value={day.toString()}
+                            data-testid={`select-item-day-${day}`}
+                          >
                             {day}日目
                           </SelectItem>
                         ))}
@@ -272,7 +276,10 @@ export function ActivityDialog({
                   </Button>
                 </div>
               ) : (
-                <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50 transition-colors">
+                <label
+                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50 transition-colors"
+                  data-testid="label-upload-image"
+                >
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <Upload className="w-8 h-8 mb-2 text-muted-foreground" />
                     <p className="text-sm text-muted-foreground">

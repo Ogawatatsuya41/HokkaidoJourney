@@ -120,7 +120,7 @@ export function ActivityCard({ activity, onEdit }: ActivityCardProps) {
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDelete}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              className="bg-destructive text-destructive-foreground"
               data-testid="button-confirm-delete"
             >
               削除
@@ -133,18 +133,21 @@ export function ActivityCard({ activity, onEdit }: ActivityCardProps) {
         <div
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
           onClick={() => setShowImageModal(false)}
+          data-testid={`overlay-image-modal-${activity.id}`}
         >
           <div className="relative max-w-5xl max-h-[90vh]">
             <img
               src={activity.imageUrl}
               alt={activity.title}
               className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              data-testid={`img-modal-${activity.id}`}
             />
             <Button
               variant="ghost"
               size="icon"
-              className="absolute top-2 right-2 bg-black/50 text-white hover:bg-black/70"
+              className="absolute top-2 right-2 bg-black/50 text-white"
               onClick={() => setShowImageModal(false)}
+              data-testid={`button-close-modal-${activity.id}`}
             >
               <span className="text-2xl">&times;</span>
             </Button>
