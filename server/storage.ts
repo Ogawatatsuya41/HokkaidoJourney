@@ -1,37 +1,50 @@
-import { type User, type InsertUser } from "@shared/schema";
+import { type Activity, type InsertActivity } from "@shared/schema";
 import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
-
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getAllActivities(): Promise<Activity[]>;
+  getActivity(id: string): Promise<Activity | undefined>;
+  createActivity(activity: InsertActivity): Promise<Activity>;
+  updateActivity(id: string, activity: Partial<InsertActivity>): Promise<Activity | undefined>;
+  deleteActivity(id: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+  private activities: Map<string, Activity>;
 
   constructor() {
-    this.users = new Map();
+    this.activities = new Map();
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getAllActivities(): Promise<Activity[]> {
+    return Array.from(this.activities.values());
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async getActivity(id: string): Promise<Activity | undefined> {
+    return this.activities.get(id);
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async createActivity(insertActivity: InsertActivity): Promise<Activity> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const activity: Activity = { ...insertActivity, id };
+    this.activities.set(id, activity);
+    return activity;
+  }
+
+  async updateActivity(
+    id: string,
+    updates: Partial<InsertActivity>
+  ): Promise<Activity | undefined> {
+    const activity = this.activities.get(id);
+    if (!activity) return undefined;
+
+    const updated: Activity = { ...activity, ...updates };
+    this.activities.set(id, updated);
+    return updated;
+  }
+
+  async deleteActivity(id: string): Promise<boolean> {
+    return this.activities.delete(id);
   }
 }
 
