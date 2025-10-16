@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ThemeToggle } from "@/components/theme-toggle";
+//import { ThemeToggle } from "@/components/theme-toggle";
 import { ActivityCard } from "@/components/activity-card";
 import { ActivityDialog } from "@/components/activity-dialog";
 import type { Activity } from "@shared/schema";
@@ -49,7 +49,7 @@ export default function ItineraryPage() {
               旅行のしおり
             </h1>
           </div>
-          <ThemeToggle />
+          // <ThemeToggle />
         </div>
       </header>
 
