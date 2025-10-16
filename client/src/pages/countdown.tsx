@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
+// import { ThemeToggle } from "@/components/theme-toggle";
 import hokkaidoImage from "@assets/stock_images/hokkaido_japan_beaut_71cda826.jpg";
 
 export default function CountdownPage() {
@@ -43,7 +43,7 @@ export default function CountdownPage() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/70" />
 
       <div className="absolute top-4 right-4 z-10">
-        <ThemeToggle />
+        // <ThemeToggle />
       </div>
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center">
